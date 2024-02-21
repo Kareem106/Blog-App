@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+    <body>
+        <%- include("./partials/nav.ejs") %>
+            <div class="details">
+                <section class="heading">
+                    <h1>
+                        <%= blog.title %>
+                    </h1>
+                    <span class="date">
+                        .
+                        <%= new Date(blog.updatedAt).toDateString() %>
+                    </span>
+                    <span class="author">
+                        .
+                        <%= blog.author %>
+                    </span>
+                    <div class="options">
+                        <span class="btn">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </span>
+                        <ul class="menu">
+                            <li>
+                                <a class="delete" data-doc="<%= blog._id %>">delete</a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="body">
+                    <p>
+                        <%= blog.body %>
+                    </p>
+                </section>
+            </div>
+            <script>
+                const btn = document.querySelector("span.btn");
+                const menu = document.querySelector("ul.menu");
+                const deleteBtn = document.querySelector("a.delete");
+                btn.addEventListener('click', e => {
+                    menu.classList.toggle("selected");
+                });
+                deleteBtn.addEventListener("click", e => {
+                    const url = `/blogs/${deleteBtn.dataset.doc}`;
+                    fetch(url, {
+                        method: "DELETE"
+                    })
+                        .then(res => res.json())
+                        .then(data => window.location.href = data.redirect)
+                        .catch(err => console.log(err));
+                })
+            </script>
+    </body>
+
+</html>

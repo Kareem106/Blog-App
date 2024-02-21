@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+    <body>
+        <%- include("./partials/nav.ejs") %>
+            <section class="main">
+                <h1>Welcome to Blog App</h1>
+            </section>
+            <section class="blogs">
+                <% if (blogs.length>0) { %>
+                    <% blogs.forEach(blog=> { %>
+                        <div class="single-blog">
+                            <div class="heading">
+                                <h2>
+                                    <%= blog.title %>
+                                </h2>
+                                <span class="date">
+                                    .
+                                    <%= new Date(blog.updatedAt).toDateString() %>
+                                </span>
+                                <span class="author">
+                                    .
+                                    <%= blog.author %>
+                                </span>
+                            </div>
+                            <p>
+                                <%= blog.body %>
+                            </p>
+                            <a href="/blogs/<%= blog._id %>" class="read-more">Read More</a>
+                        </div>
+                        <% }) %>
+                            <% } %>
+            </section>
+    </body>
+
+</html>

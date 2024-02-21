@@ -1,0 +1,236 @@
+:root {
+    --light: #94d2bd;
+    --medium: #0a9396;
+    --dark: #005f73;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    font-size: 18px;
+}
+
+.nav-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+    color: black;
+    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.136);
+}
+
+.nav-bar ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.nav-bar li {
+    padding: 1rem;
+    position: relative;
+}
+
+.nav-bar li a {
+    position: relative;
+    display: block;
+    color: black;
+    text-decoration: none;
+    font-size: 1.5em;
+    color: black;
+    text-align: center;
+}
+
+.nav-bar li .under-line {
+    display: none;
+    background-color: green;
+    height: 5px;
+    border-radius: 5px;
+    width: calc(100% - 2rem);
+    position: absolute;
+}
+
+.nav-bar li:hover .under-line {
+    display: block;
+}
+
+section {
+    padding: 0 1rem;
+}
+
+section.main {
+    margin: 3rem 0;
+    text-align: center;
+}
+
+section.main h1 {
+    margin: 2rem 0;
+    text-transform: capitalize;
+}
+
+section.blogs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 2rem;
+    width: 100%;
+}
+
+
+.single-blog {
+    position: relative;
+    margin-bottom: 0.5rem;
+    width: 50%;
+}
+
+.single-blog .heading {
+    margin-bottom: 0.6rem;
+}
+
+.single-blog .heading h2 {
+    display: inline-block;
+}
+
+.single-blog .heading span {
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.single-blog p {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.single-blog::before {
+    position: absolute;
+    content: "";
+    left: -15px;
+    height: 100%;
+    width: 7px;
+    background-color: var(--medium);
+}
+
+.single-blog .read-more {
+    display: inline-block;
+    padding: 0.5rem;
+    background-color: var(--dark);
+    text-decoration: none;
+    color: white;
+    margin: 0.5rem 0;
+}
+
+section.form {
+    display: flex;
+    justify-content: center;
+}
+
+section.form form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    font-size: 1.2rem;
+}
+
+section.form form * {
+    margin-bottom: 0.5rem;
+}
+
+section.form form input,
+section.form form textarea {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: solid 2px var(--medium);
+    outline: none;
+    font-size: 1.2rem;
+}
+
+section.form form textarea {
+    max-width: 100%;
+}
+
+section.form form input:focus,
+section.form form textarea:focus {
+    box-shadow: 0 0 3px 2px var(--medium);
+}
+
+section.form form input.submit-btn {
+    width: fit-content;
+    padding: 0.5rem;
+    background-color: var(--medium);
+    color: white;
+    margin: 0.5rem 0;
+}
+
+.details section.heading {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.details section.heading .date,
+.details section.heading .author {
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.details section.heading .options {
+    display: inline-block;
+    margin-left: 10px;
+    position: relative;
+}
+
+.details section.heading .options .btn {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    cursor: pointer;
+}
+
+.details section.heading .options .btn .dot {
+    width: 5px;
+    height: 5px;
+    background-color: gray;
+    border-radius: 50%;
+}
+
+.details section.heading .options .menu {
+    display: none;
+    position: absolute;
+    list-style-type: none;
+    padding: 0;
+    top: 20px;
+    left: 20px;
+}
+
+.details section.heading .options .menu.selected {
+    display: inline;
+}
+
+.details section.heading .options .menu a {
+    color: black;
+    text-decoration: none;
+    padding: 10px;
+    background-color: rgba(128, 128, 128, 0.402);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.details section.heading .options .menu a:hover {
+    color: white;
+    background-color: rgb(255, 50, 50);
+}
+
+@media (max-width:768px) {
+    .single-blog {
+        width: 100%;
+    }
+}
